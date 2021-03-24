@@ -1,0 +1,351 @@
+.py-4 {
+    margin-left: 10%;
+}
+
+.inline {
+    display: inline-block;
+    margin: 20px 20px;
+}
+.noti_table{
+    font-weight: bold;
+    margin-left: 20px;
+    color : red;
+}
+.tables {
+    width: auto;
+
+}
+
+button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.bnt_table {
+    margin-left: 0px !important;
+    margin-top: 10px;
+}
+/* .table {
+    width: 30px;
+    height: 30px;
+    background: white;
+} */
+
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    -webkit-animation-name: fadeIn;
+    /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+    position: fixed;
+    bottom: 0;
+    background-color: #fefefe;
+    width: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+@keyframes slideIn {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* //button dropdown  */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+
+
+/* add table */
+.table {
+margin: 0 0 40px 0;
+width: 100%;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+display: table;
+}
+.black{
+background: gray;
+margin-left: 30px;
+}
+.red {
+background: red;
+}
+.row {
+
+display: table-row;
+background: #f6f6f6;
+}
+.row:nth-of-type(odd) {
+background: #e9e9e9;
+}
+.row.header {
+font-weight: 900;
+color: #ffffff;
+background: #ea6153;
+}
+.row.green {
+background: #27ae60;
+}
+.cell {
+padding: 6px 12px;
+display: table-cell;
+}
+
+
+/* select */
+
+/* Thiết kẻ thẻ select */
+select {
+-webkit-appearance: none;
+-moz-appearance: none;
+-ms-appearance: none;
+appearance: none;
+outline: 0;
+box-shadow: none;
+border: 0 !important;
+background: #32d375;
+background-image: none;
+}
+
+.select {
+position: relative;
+display: flex;
+width: 20em;
+height: 3em;
+line-height: 3;
+background: #fff;
+overflow: hidden;
+border-radius: .25em;
+}
+select {
+flex: 1;
+padding: 0 .5em;
+color: #fff;
+cursor: pointer;
+}
+/* thiết kế dấu mũi tên */
+.select::after {
+content: '\25BC';
+position: absolute;
+top: 0;
+right: 0;
+padding: 0 1em;
+background: DodgerBlue;
+cursor: pointer;
+pointer-events: none;
+-webkit-transition: .25s all ease;
+-o-transition: .25s all ease;
+transition: .25s all ease;
+color: white;
+}
+/* Transition */
+.select:hover::after {
+color: Gainsboro;
+}
+
+
+/* input number */
+
+/* img table */
+.img_table {
+    width : 200px;
+    height : 160px;
+}
+.bnt_tables {
+    background: whitesmoke;
+    border-radius: 2px;
+    border: gray solid 1px ;
+    box-shadow: 0px 0px 2px black;
+}
+.bnt_tables:hover {
+    background: cornflowerblue;
+
+}
+
+/* navs */
+.py-5 {
+    padding-top: 0px !important;
+}
+
+.topnav {
+overflow: hidden;
+background-color: whitesmoke;
+}
+
+.topnav a {
+float: left;
+display: block;
+color: black;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+.topnav a:hover {
+background-color: rgb(0, 0, 0);
+color: white;
+}
+
+.topnav a.active {
+background-color: gray;
+color: white;
+}
+
+.topnav .icon {
+display: none;
+}
+
+.threedot {
+
+    width : 64px ;
+    height : 32px ;
+    box-shadow: 0px 0px 2px black ;
+    top : 0 ;
+    right: 0 ;
+    background: white;
+    border-radius: 3px ;
+}
+.threedot p {
+    color : gray;
+    padding-top: 3px;
+    text-align:center;
+    transition: 0.1s;
+}
+.threedot:hover {
+    background: rgb(249, 202, 253);
+    transition: 0.1s ;
+
+}
+
+
+
+
+
+
+
