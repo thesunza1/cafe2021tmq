@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/home/home.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+
     <style>
 
 
@@ -10,6 +11,8 @@
 @endsection
 
 @section('scripts')
+
+
     <script src="{{ asset('js/home/home.js') }}"></script>
     <script>
 
@@ -230,28 +233,50 @@
                 <br>
                 <form action="{{ route('home.changeTable') }}" method="post">
                    <div class="select">
-                    <select onchange="chose_drk(this)">
+                    <select onchange="chose_drk(this)" name="changetbl">
                        @foreach ($tables as $table )
                             @if ($table->idStatus !=3)
-                                <option value="{{ $table->id }}" name="changetbl">{{ $table->id }}</option>
+                                <option value="{{ $table->id }}" >{{ $table->id }}</option>
                             @endif
                         @endforeach
                           </select>
                        </div>
+                     @csrf
+                    <input type="hidden" class="Ntable" name="Ntable" value="1">
+
+                    <button type="submit" class="bnt_table">change table</button>
                 </form>
 
                 <br>
             </div>
 
             <button class="accordion">add table to group</button>
+
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <br>
+                <form action="  {{ route('home.addgroup') }}" method="post">
+                    @foreach ($tables as $table)
+                        @if ($table->idStatus==3 && $table->addTable != '')
+                            <div class="form-check form-check-inline checkboxs">
+                                <input class="form-check-input" type="checkbox" name="gettable[]" value="{{ $table->id }}">
+                                <label class="form-check-label" for="inlineCheckbox1"> {{ $table->id }} </label>
+                            </div>
+                        @endif
+                        @if ($table->idStatus == 1 || $table->idStatus ==2 )
+                            <div class="form-check form-check-inline checkboxs">
+                                <input class="form-check-input " type="checkbox" name="gettable[]" value="{{ $table->id }}">
+                                <label class="form-check-label" for="inlineCheckbox1"> {{ $table->id }} </label>
+                            </div>
+                        @endif
+                    @endforeach
+
+
+                    <button type="submit" class="bnt_table">add group</button>
+                </form>
             </div>
         </div>
         <div class="modal-footer">
-            <h3>Modal Footer</h3>
+            <h3></h3>
         </div>
     </div>
 

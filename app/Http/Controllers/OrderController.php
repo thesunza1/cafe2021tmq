@@ -246,9 +246,45 @@ class OrderController extends Controller
     }
 
     public function changeTable(Request $request) {
-        $table_id = $request->Ntable ;
+        $table_id = $request->Ntable ; // id table
+        $table_id_to = $request->changetbl ;
 
-        echo "$table_id ";
+
+        $table = Table::find($table_id);
+        $table_to = Table::find($table_id_to);
+
+        if($table->id == 1) {
+
+        }
+        else {
+            $order = Order::where('idTable',$table_id)->where('status','1')->get() ;
+            $order_to =   Order::where('idTable',$table_id_to)->where('status','1')->get() ;
+            if(count($order_to) == 0 ) {
+                Order::where('idTable',$table_id)->where('status','1')->update(['idTable' => $table_id_to]) ;
+                $table->idStatus = 1;
+                $table->save();
+                $table_to->idStatus =2;
+                $table_to->save();
+            }
+            else {
+                $idorder = $order[0]->id ;
+                $idorder_to = $order_to[0]->id ;
+
+                //update  bill in orderitem to orderitem_to
+                OrderItem::where('idOrder',$idorder)->update(['idOrder'=>$idorder_to]);
+                $new_total_price = $order[0]->totalPrices + $order_to[0]->totalPrices ;
+                Order::where('idTable',$table_id_to)->where('status','1')->update(['totalPrices'=>$new_total_price]) ;
+                Order::where('idTable',$table_id)->where('status','1')->delete();
+
+                $table->idStatus = 1;
+                $table_to->idStatus = 2;
+                $table_to->save();
+                $table->save();
+            }
+
+        }
+
+        return redirect('/home');
 
     }
 }

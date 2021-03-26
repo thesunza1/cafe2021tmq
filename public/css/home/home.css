@@ -343,6 +343,25 @@ display: none;
 
 }
 
+/* add group table  */
+.checkboxs {
+    width : 70px ;
+    height : 50px ;
+    text-align: center;
+    line-height: 50px ;
+}
+.checkboxs input  {
+  -ms-transform: scale(3); /* IE */
+  -moz-transform: scale(3); /* FF */
+  -webkit-transform: scale(3); /* Safari and Chrome */
+  -o-transform: scale(3); /* Opera */
+  transform: scale(3);
+  padding-right: 20px ;
+}
+.checkboxs label {
+    margin-left : 20px ;
+    font-size: large ;
+}
 
 
 

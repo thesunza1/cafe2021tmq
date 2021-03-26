@@ -51,6 +51,8 @@ Route::post('/home/sendbill','OrderController@pay')->name('home.sendbill');
 
 //change table .
 Route::post('/home/changetable', 'OrderController@changeTable')->name('home.changeTable');
+//add to group
+Route::post('/home/addgroup','TableController@addgroup')->name('home.addgroup');
 
 
 
