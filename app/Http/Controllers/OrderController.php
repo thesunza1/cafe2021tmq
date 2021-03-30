@@ -185,7 +185,7 @@ class OrderController extends Controller
                     <h5>'. $item->name .'</h5>
                 </td>
                 <td class="cell">
-                    <h5>'. $item->totalPrice .' vnd </h5>
+                    <h5>'. $item->price  .' vnd </h5>
                 </td>
                 <td class="cell">
                     <h5>'. $item->quantity .'</h5>
@@ -197,7 +197,7 @@ class OrderController extends Controller
                    <h5>'. $item->plus .'</h5>
                 </td>
                 <td class="cell">
-                    <h5>'. $item->totalPrice*$item->quantity .' vnd </h5>
+                    <h5>'. $item->totalPrice .' vnd </h5>
                 </td>
             </tr>
 
@@ -236,6 +236,10 @@ class OrderController extends Controller
         $table_id = $request->Ntable;
 
         $table = Table::find($table_id);
+        if($table->idStatus == 3 )
+        {
+            $this->changeStatus($table);
+        }
         $table->idStatus = '1';
         $table->save();
 
@@ -243,6 +247,20 @@ class OrderController extends Controller
 
         return redirect('/home');
 
+    }
+    public function changeStatus(&$tbl) {
+        $strAddTbl = trim( $tbl->addTable) ;
+        $arrTbl = explode(' ',$strAddTbl);
+        $arrObjTbl = array();
+        foreach($arrTbl as $item) {
+            array_push($arrObjTbl, Table::find($item));
+        }
+        foreach($arrObjTbl as $item) {
+            $item->idStatus =  1;
+            $item->save();
+        }
+        $tbl->addTable = '' ;
+        $tbl->save() ;
     }
 
     public function changeTable(Request $request) {
@@ -253,7 +271,7 @@ class OrderController extends Controller
         $table = Table::find($table_id);
         $table_to = Table::find($table_id_to);
 
-        if($table->id == 1) {
+        if($table->idStatus == 1) {
 
         }
         else {
@@ -261,10 +279,10 @@ class OrderController extends Controller
             $order_to =   Order::where('idTable',$table_id_to)->where('status','1')->get() ;
             if(count($order_to) == 0 ) {
                 Order::where('idTable',$table_id)->where('status','1')->update(['idTable' => $table_id_to]) ;
-                $table->idStatus = 1;
-                $table->save();
-                $table_to->idStatus =2;
-                $table_to->save();
+                // $table->idStatus = 1;
+                // $table->save();
+                // $table_to->idStatus =2;
+                // $table_to->save();
             }
             else {
                 $idorder = $order[0]->id ;
@@ -276,11 +294,18 @@ class OrderController extends Controller
                 Order::where('idTable',$table_id_to)->where('status','1')->update(['totalPrices'=>$new_total_price]) ;
                 Order::where('idTable',$table_id)->where('status','1')->delete();
 
+                // $table->idStatus = 1;
+                // $table_to->idStatus = 2;
+                // $table_to->save();
+                // $table->save();
+            }
+                if($table->idStatus == 3 ){
+                    $this->changeStatus($table) ;
+                }
                 $table->idStatus = 1;
                 $table_to->idStatus = 2;
                 $table_to->save();
                 $table->save();
-            }
 
         }
 

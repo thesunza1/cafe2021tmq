@@ -111,7 +111,7 @@
     @if ($table->idStatus==3 && $table->addTable != '' )
     {{-- <script>console.log("{{$table->addTable}}");</script> --}}
     @php
-        $stradd = $table->addTable ;
+        $stradd = trim($table->addTable, ' ') ;
         $tableadd = explode(' ',$stradd) ;
 
     @endphp
@@ -255,6 +255,7 @@
             <div class="panel">
                 <br>
                 <form action="  {{ route('home.addgroup') }}" method="post">
+                    @csrf
                     @foreach ($tables as $table)
                         @if ($table->idStatus==3 && $table->addTable != '')
                             <div class="form-check form-check-inline checkboxs">
@@ -269,8 +270,7 @@
                             </div>
                         @endif
                     @endforeach
-
-
+                    <input type="hidden" class="Ntable" name="Ntable" value="1">
                     <button type="submit" class="bnt_table">add group</button>
                 </form>
             </div>
@@ -283,6 +283,4 @@
 </div>
 
 <!-- //model box -->
-
-
 @endsection
