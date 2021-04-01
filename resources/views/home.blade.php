@@ -61,9 +61,10 @@
 <div class="topnav" id="myTopnav">
     <a href=" {{ route('home')}}" class="active">tables</a>
     <a href=" {{route('menu')}} " >menu</a>
-
-    <a href="#contact">statistical</a>
-    <a href="#about">admin page</a>
+    @if (Auth::user()->role_id == 2)
+        <a href="#contact">statistical</a>
+        <a href="#about">admin page</a>
+    @endif
 
  </div>
 @endsection
@@ -108,7 +109,7 @@
 <br>
 <h1 class="noti_table">being group:</h1>
 @foreach ($tables as $table)
-    @if ($table->idStatus==3 && $table->addTable != '' )
+    @if ($table->idStatus==3 && $table->addTable != '')
     {{-- <script>console.log("{{$table->addTable}}");</script> --}}
     @php
         $stradd = trim($table->addTable, ' ') ;

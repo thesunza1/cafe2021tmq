@@ -53,6 +53,7 @@ Route::post('/home/sendbill','OrderController@pay')->name('home.sendbill');
 Route::post('/home/changetable', 'OrderController@changeTable')->name('home.changeTable');
 //add to group
 Route::post('/home/addgroup','TableController@addgroup')->name('home.addgroup');
-
+//warehoure
+Route::get('/home/warehouse','WarehouseController@index')->name('home.warehouse');
 
 

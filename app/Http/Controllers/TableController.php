@@ -38,6 +38,7 @@ class TableController extends Controller
         else {
             $this->atgroup3($objTables, $arrTable);
         }
+        return redirect('/home');
     }
     //get min table in table ;
     public function minTable($arr , $tbl )  {
@@ -108,10 +109,16 @@ class TableController extends Controller
     public function agroup(&$arr) {
         $count = count($arr);
         for($i=1 ; $i<$count ; $i++ ){
-            $arr[0]->addTable .= ' '. $arr[$i]->id ;
-            if($arr[$i]->idStatus == 3) {
 
-                $arr[0]->addTable .= ' '. $arr[$i]->addTable ;
+            $arr[0]->addTable .= ' '. $arr[$i]->id ;
+
+
+
+            if($arr[$i]->idStatus == 3) {
+                if($arr[$i]->addTable !=''){
+                    $arr[0]->addTable .=  $arr[$i]->addTable ;
+                }
+
             }
         }
         $arr[0]->save();
@@ -151,10 +158,10 @@ class TableController extends Controller
                 if($table->idStatus == 3) {
                     $this->changeStatus3($table);
                 }
-                $table->idStatus = 1;
-                $table_to->idStatus = 2;
-                $table_to->save();
-                $table->save();
+                // $table->idStatus = 1;
+                // $table_to->idStatus = 2;
+                // $table_to->save();
+                // $table->save();
 
         }
 
@@ -167,7 +174,7 @@ class TableController extends Controller
             array_push($arrObjTbl, Table::find($item));
         }
         foreach($arrObjTbl as $item) {
-            $item->idStatus =  1;
+            $item->idStatus =  3;
             $item->save();
         }
         $tbl->addTable = '' ;
