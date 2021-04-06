@@ -55,8 +55,8 @@ Route::post('/home/changetable', 'OrderController@changeTable')->name('home.chan
 Route::post('/home/addgroup','TableController@addgroup')->name('home.addgroup');
 //warehoure
 Route::get('/home/warehouse','WarehouseController@index')->name('home.warehouse');
-Route::get('/home/warehouse/create','WarehouseController@show')->name('home.warehouse.create');
+Route::get('/home/warehouse/create/{id}','WarehouseController@show')->name('home.warehouse.create');
 Route::post('/home/warehouse/store','WarehouseController@store')->name('home.warehouse.store');
-
-
+Route::get('/home/warehouse/getshow/{id}','WarehouseController@get_show')->name('home.warehouse.get_show');
+Route::post('home/warehouse/postupdate','WarehouseController@post_update')->name('home.warehouse.post_update');
 
