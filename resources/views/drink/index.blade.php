@@ -8,12 +8,12 @@
 @endsection
 
 @section('navs')
- <div class="topnav" id="myTopnav">
+ {{-- <div class="topnav" id="myTopnav">
     <a href=" {{ route('home')}} " >tables</a>
     <a href=" {{route('menu')}} " class="active">menu</a>
     <a href="#contact">statistical</a>
     <a href="#about">admin page</a>
-</div>
+</div> --}}
 @endsection
 
 

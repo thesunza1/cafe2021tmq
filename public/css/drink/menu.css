@@ -162,11 +162,8 @@ display: table-cell;
 
 }
 
-/* navs */
-.py-5 {
-    padding-top: 0px !important;
-}
 
+/*
 .topnav {
 overflow: hidden;
 background-color: whitesmoke;
@@ -191,9 +188,7 @@ color: white;
 background-color: gray;
 color: white;
 }
-
 .topnav .icon {
 display: none;
-}
-
+} */
 

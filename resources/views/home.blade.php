@@ -57,17 +57,17 @@
 
 
 
-@section('navs')
+{{-- @section('navs')
 <div class="topnav" id="myTopnav">
     <a href=" {{ route('home')}}" class="active">tables</a>
     <a href=" {{route('menu')}} " >menu</a>
-    @if (Auth::user()->role_id == 2)
+    @if (Auth::user()->role_id == 0)
         <a href="#contact">statistical</a>
         <a href="#about">admin page</a>
     @endif
 
  </div>
-@endsection
+@endsection --}}
 
 
 

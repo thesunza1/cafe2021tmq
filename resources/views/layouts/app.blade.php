@@ -73,7 +73,22 @@
         </nav>
 
         <main class="py-5">
-            @yield('navs')
+           @guest
+
+           @else
+               <div class="topnav" id="myTopnav">
+                <a href=" {{ route('home')}}" class="active">tables</a>
+                <a href=" {{route('menu')}} " >menu</a>
+
+                @if (Auth::user()->role_id == 0)
+                    <a href="{{ route('home.warehouse') }}">warehouse</a>
+                    <a href="#about">admin page</a>
+                @endif
+
+            </div>
+           @endguest
+            {{-- @yield('navs') --}}
+
         </main>
         <main class="py-4">
             @yield('content')

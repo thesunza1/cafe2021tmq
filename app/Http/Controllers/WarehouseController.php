@@ -6,6 +6,7 @@ use App\Warehouse;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class WarehouseController extends Controller
 {
@@ -20,23 +21,43 @@ class WarehouseController extends Controller
     }
     public function get_show($id) {
         $element = Warehouse::find($id);
-        //$element->created_at = date_format($element,'Y-m-d H:i:s');
-        // $datetime = new DateTime("$element->created_at");
-        // $in =strval(date_format($datetime,'Y-m-d H:i:s'));
-        // //dd($in);
-        // $element->created_at = $in ;
-        //echo $element->created_at;
-
         echo $element;
-
     }
 
     public function post_update(Request $request) {
-        $input = $request->all();
-        dd($input);
+        $idWh = $request->id;
+        $toNameWh = $request->name;
+        $priceWh = $request->price ;
+        $inquantity =  $request->inquantity;
+        $totalIn = $priceWh * $inquantity;
+        Warehouse::where('id',$idWh)->update([
+            'toName' => $toNameWh,
+            'price' => $priceWh,
+            'totalIn' => $totalIn,
+            'inquantity'=>$inquantity,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+        return redirect('home/warehouse');
     }
     public function store(Request $request) {
+        $toNameWh = $request->name;
+        $priceWh = $request->price ;
+        $inquantity =  $request->inquantity;
+        $totalIn = $priceWh * $inquantity;
+        Warehouse::insert([
+            'toName' => $toNameWh,
+            'price' => $priceWh,
+            'totalIn' => $totalIn,
+            'inquantity'=>$inquantity,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+            'created_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        return redirect('home/warehouse');
 
     }
 
+    public function delete(Request $request) {
+        dd($request->all());
+
+    }
 }

@@ -1,6 +1,8 @@
 .wh-bt-dl {
     background-color: rgb(187, 61, 61) !important;
-
+}
+.wh-bt-cr {
+    background-color: #5cb85c !important;
 }
 .wh-cten {
     width: 80%;
@@ -41,6 +43,9 @@
   background: #ea6153;
 }
 
+.red {
+    background-color: #ea6153  !important;
+}
 .row.green {
   background: #27ae60;
 }
@@ -153,4 +158,13 @@
     border:1px solid white ;
     outline: none;
 }
+.blue {
+    background: #2980b9;
+}
+.wh-tb-delte {
+    width: 100%;
 
+}
+.wh-tb-delete td div  {
+    width: 700px;
+}
