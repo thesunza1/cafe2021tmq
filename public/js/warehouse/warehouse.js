@@ -39,6 +39,7 @@ function md_cr() {
     $('#cr_up_time').val(dateTime);
     $('#md-create').show();
 }
+//modal delete
 function md_dl(deleteid){
     $('#md-delete').show();
     $('#wh_dl_id').val(deleteid);

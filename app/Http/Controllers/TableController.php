@@ -109,11 +109,17 @@ class TableController extends Controller
     public function agroup(&$arr) {
         $count = count($arr);
         for($i=1 ; $i<$count ; $i++ ){
-
-            $arr[0]->addTable .= ' '. $arr[$i]->id ;
-
-
-
+            if($arr[0]->addTable != ""){
+                if($arr[0]->addTable[strlen($arr[0]->addTable)-1]==' '){
+                $arr[0]->addTable .= $arr[$i]->id ;
+                }
+                else{
+                    $arr[0]->addTable .= ' '.$arr[$i]->id ;
+                }
+            }
+            else{
+                $arr[0]->addTable .= ' '. $arr[$i]->id ;
+            }
             if($arr[$i]->idStatus == 3) {
                 if($arr[$i]->addTable !=''){
                     $arr[0]->addTable .=  $arr[$i]->addTable ;

@@ -60,4 +60,5 @@ Route::post('/home/warehouse/store','WarehouseController@store')->name('home.war
 Route::get('/home/warehouse/getshow/{id}','WarehouseController@get_show')->name('home.warehouse.get_show');
 Route::post('home/warehouse/postupdate','WarehouseController@post_update')->name('home.warehouse.post_update');
 Route::post('/home/warehouse/delete','WarehouseController@delete')->name('home.warehouse.delete');
-
+//chart google
+Route::match(['get','post'],'/home/statistical','statistical@day')->name('home.statistical');
