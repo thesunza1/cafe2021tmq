@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Drink;
+use App\OrderItem;
 use App\Status;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Laravel\Ui\Presets\React;
+
+use function Psy\debug;
 
 class DrinkController extends Controller
 {
@@ -24,19 +27,18 @@ class DrinkController extends Controller
 
     //dua drink vao database ;
     public function store(Request $request)  {
-        //lay names cua do uong
+
         $names =  $request->names ;
-        //lay prices cua do uong
+
         $price = $request->price;
-        //lay status cua do uong
+
         $status = $request->status;
-        //in ra xem thu noi dung ;
-        //tao ten file theo thoi gian
+
         $filename =time().'.'. $request->imgs->extension();
         $pathfile = 'img/drinks/';
-        //di chuyen toi thu muc img/drinks
+
         $request->imgs->move(public_path("$pathfile"),$filename);
-        //them vao database
+
         Drink::insert([
             'name' => $names,
             'price' => $price,
@@ -111,24 +113,41 @@ class DrinkController extends Controller
 
     }
     public function post_update(Request $request) {
-        $idMl = $request->id;
-        $toNameMl = $request->name;
-        $priceMl = $request->price ;
-        $image=  $request->images;
-        $status=  $request->status;
-        Drink::where('id',$idMl)->update([
-            'toName' => $toNameMl,
-            'price' => $priceMl,
-            'totalIn' => $image,
-            'inquantity'=>$status,
-            'updated_at' => Carbon::now()->toDateTimeString()
+
+        $id = $request->id ;
+        $names =  $request->names ;
+        $price = $request->price;
+        $status = $request->status;
+        if($request->imgs1 == null) {
+         Drink::where('id',$id)->update([
+            'name' => $names,
+            'price' => $price,
+            'status'=> $status,
+            'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
-        return redirect('home/menulist');
+        }
+        else {
+        $filename =time().'.'. $request->imgs1->extension();
+        $pathfile = 'img/drinks/';
+        $request->imgs1->move(public_path("$pathfile"),$filename);
+        //them vao database
+        Drink::where('id',$id)->update([
+            'name' => $names,
+            'price' => $price,
+            'status'=> $status,
+            'image' => $pathfile.$filename,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+            }
+
+        return redirect('/home/menulist');
 
     }
     public function delete(Request $request) {
+        OrderItem::where('idDrink',$request->id)->delete();
+        Drink::where('id',$request->id)->delete();
 
-        dd($request->all());
+        return redirect('/home/menulist');
     }
 
 }

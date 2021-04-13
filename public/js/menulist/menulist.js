@@ -58,18 +58,17 @@ function change_ttprice() {
     $ttprice_up = document.getElementById('up_tt');
     $ttprice_up.value = parseInt($inquanity_up.value * $price_up.value);
 }
-$('#up_price').change(change_ttprice);
-$('#up_inquanti').change(change_ttprice);
-//change price create
-function change_ttprice_cr() {
-    //$('#up_tt').val =parseInt( $('#up_inquanti').val()) *parseInt( $('#up_price').val());
-    $inquanity_up = document.getElementById('cr_inquanti');
-    $price_up = document.getElementById('cr_price');
-    $ttprice_up = document.getElementById('cr_tt');
-    $ttprice_up.value = parseInt($inquanity_up.value * $price_up.value);
-}
-$('#cr_price').change(change_ttprice_cr);
-$('#cr_inquanti').change(change_ttprice_cr);
-
-
+//get file when chose in modal create
+// function imagechance(a) {
+//     var filepath = a.value;
+//     $('#ml-cr-img').attr('src',filepath);
+//     console.log(filepath);
+// }
+$('#actual-btn').change( function(event) {
+    $("#ml-cr-img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+});
+$('#actual-btn1').change( function(event) {
+    //console.log(URL.createObjectURL(event.target.files[0]));
+    $("#ml-up-img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+});
 

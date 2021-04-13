@@ -126,7 +126,7 @@
             <div class="modal-body">
                 <div class="panel">
                     <br>
-                    <form action="{{ route('home.menulist.post_update') }}" method="post">
+                    <form action="{{ route('home.menulist.post_update') }}" enctype="multipart/form-data" method="post">
                         @csrf
                                 <input type="hidden" name="id" id="ml-up-id">
                                 <label for="names"><b>name of drink:</b></label>
@@ -138,10 +138,10 @@
 
                                 <b>image for drink:  </b>
 
-                                <label for="imgs" class="file">
+                                <label for="imgs1" class="file">
 
-                                    <input type="file" name="imgs" id="actual-btn1" hidden  accept="image/*">
-                                    <label for="actual-btn">Choose File</label>
+                                    <input type="file" name="imgs1" id="actual-btn1" hidden  accept="image/*">
+                                    <label for="actual-btn1">Choose File</label>
                                     <span id="file-chosen">
                                         <img src="" id="ml-up-img" alt="">
                                     </span>
@@ -187,9 +187,11 @@
 
                                 <label for="imgs" class="file">
 
-                                    <input type="file" name="imgs" id="actual-btn" hidden  accept="image/*">
+                                    <input type="file" name="imgs" id="actual-btn"  hidden  accept="image/*">
                                     <label for="actual-btn">Choose File</label>
-                                    <span id="file-chosen"></span>
+                                    <span id="file-chosen">
+                                        <img src="" alt="" id="ml-cr-img">
+                                    </span>
                                 </label>
 
                                 <br>
@@ -202,10 +204,7 @@
                                 <button type="submit" class="signupbtn">them vao </button>
 
                             </div>
-
                         </form>
-
-
                 </div>
             </div>
         </div>
@@ -214,7 +213,7 @@
 
     <div class="modal" id="md-delete">
         <div class="modal-content dl-content">
-            <div class="modal-header">
+            <div class="modal-header red">
                 <h2 class="stt">create menulist </h2>
             </div>
             <div class="modal-body">
@@ -225,7 +224,7 @@
                         <input type="hidden" id="wh_dl_id" name="id" value="1">
                         <h1><center>do you want delete it?</center></h1>
                         <br>
-                        <table class="wh-tb-delete">
+                        <table class="wh-tb-delete ">
                             <tr class="">
                                 <td class="">
                                     <div></div>

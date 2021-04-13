@@ -189,4 +189,10 @@
 #ml-up-img {
     width : 90px;
     height: 70px;
+
+}
+#ml-cr-img {
+    width : 90px;
+    height: 70px;
+    display: none;
 }
