@@ -1,0 +1,18 @@
+.st-cter {
+    width: 80%;
+    height: auto ;
+    margin-left: 10%;
+}
+
+.st-cter h1 {
+    text-align: center;
+}
+
+.st-hl1 h1 {
+    text-align: center;
+    color:gray;
+}
+.st-fm-date h3 {
+    display : inline;
+    margin-left: 20%;
+}

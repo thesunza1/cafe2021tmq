@@ -72,9 +72,6 @@
 
 
 @section('content')
-
-
-
 <br>
 <h1 class="noti_table">being none:</h1>
 @foreach ($tables as $table)

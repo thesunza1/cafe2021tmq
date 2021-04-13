@@ -55,10 +55,15 @@ Route::post('/home/changetable', 'OrderController@changeTable')->name('home.chan
 Route::post('/home/addgroup','TableController@addgroup')->name('home.addgroup');
 //warehoure
 Route::get('/home/warehouse','WarehouseController@index')->name('home.warehouse');
-Route::get('/home/warehouse/create/{id}','WarehouseController@show')->name('home.warehouse.create');
 Route::post('/home/warehouse/store','WarehouseController@store')->name('home.warehouse.store');
 Route::get('/home/warehouse/getshow/{id}','WarehouseController@get_show')->name('home.warehouse.get_show');
 Route::post('home/warehouse/postupdate','WarehouseController@post_update')->name('home.warehouse.post_update');
 Route::post('/home/warehouse/delete','WarehouseController@delete')->name('home.warehouse.delete');
 //chart google
 Route::match(['get','post'],'/home/statistical','statistical@day')->name('home.statistical');
+//drinks
+Route::get('/home/menulist','DrinkController@indexMl')->name('home.menulist');
+Route::post('/home/menulist/store','DrinkController@storeMl')->name('home.menulist.store');
+Route::get('/home/menulist/getshow/{id}','DrinkController@get_showMl')->name('home.menulist.get_show');
+Route::post('home/menulist/postupdate','DrinkController@post_update')->name('home.menulist.post_update');
+Route::post('/home/menulist/delete','DrinkController@delete')->name('home.menulist.delete');

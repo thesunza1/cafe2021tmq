@@ -82,9 +82,10 @@
 
                 @if (Auth::user()->role_id == 0)
                     <a href="{{ route('home.warehouse') }}">warehouse</a>
-                    <a href="#about">admin page</a>
-                @endif
+                    <a href="{{ route('home.statistical') }}">statistical</a>
+                    <a href="{{ route('home.menulist') }}">menu list </a>
 
+                @endif
             </div>
            @endguest
             {{-- @yield('navs') --}}

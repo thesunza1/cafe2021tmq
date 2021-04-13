@@ -7,6 +7,7 @@ use App\Status;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Laravel\Ui\Presets\React;
 
 class DrinkController extends Controller
 {
@@ -45,7 +46,7 @@ class DrinkController extends Controller
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
-        return view('drink.create');
+        return redirect('/home/menulist');
 
     }
 
@@ -80,10 +81,54 @@ class DrinkController extends Controller
         }
 
 
+    }
 
-
-
-
+    //menu list
+    public function indexMl() {
+        $menulist = Drink::all()->reverse()->values() ;
+        return view('menulist.index')->with('menulist', $menulist);
 
     }
+
+    public function get_showMl($id) {
+        $element = Drink::find($id);
+        echo $element;
+    }
+    public function storeMl(Request $request) {
+        $toNameMl = $request->name;
+        $priceMl = $request->price ;
+        $image=  $request->images;
+        $status=  $request->status;
+        Drink::insert([
+            'name' => $toNameMl,
+            'price' => $priceMl,
+            'image' => $image,
+            'status'=>$status,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+            'created_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        return redirect('home/menulist');
+
+    }
+    public function post_update(Request $request) {
+        $idMl = $request->id;
+        $toNameMl = $request->name;
+        $priceMl = $request->price ;
+        $image=  $request->images;
+        $status=  $request->status;
+        Drink::where('id',$idMl)->update([
+            'toName' => $toNameMl,
+            'price' => $priceMl,
+            'totalIn' => $image,
+            'inquantity'=>$status,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+        return redirect('home/menulist');
+
+    }
+    public function delete(Request $request) {
+
+        dd($request->all());
+    }
+
 }

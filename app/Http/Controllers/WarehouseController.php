@@ -16,9 +16,7 @@ class WarehouseController extends Controller
         return view('warehouse.index')->with('warehouses', $warehouses);
     }
 
-    public function show($id) {
 
-    }
     public function get_show($id) {
         $element = Warehouse::find($id);
         echo $element;
