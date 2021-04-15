@@ -128,7 +128,20 @@
     @endif
 
 @endforeach
+<br>
+<h1 class="noti_table">disable table: </h1>
+@foreach ($tables as $table)
+    @if ($table->idStatus==4)
+    <div class="tables inline">
+        <button class="bnt_tables"  name="bnt_table" value=" {{ $table->id }} ">
+            <input type="hidden" class="idstatus" name="idstatus" value="{{ $table->idStatus }}">
+            <img class="img_table" src="{{ $table->image }}" alt="">
+            <h2 style="color:black;">table {{ $table->id }}</h2>
+        </button>
+    </div>
+    @endif
 
+@endforeach
 <!-- The Modal -->
 <div id="myModal" class="modal">
 

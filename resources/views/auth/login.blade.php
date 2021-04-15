@@ -2,7 +2,10 @@
 @section('styles')
     <style>
         body {
-            background: url("{{asset('img/login/bg_login.jpg')}}")
+            background: url("{{asset('img/login/bg_login.jpg')}}") no-repeat center center fixed;
+            /* background-repeat: no-repeat;
+            background-size: ; */
+           background-size: 100% 100%;
         }
     </style>
 @endsection
