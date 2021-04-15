@@ -24,7 +24,7 @@
 @foreach ($drinks as $drink)
     <div class="tables inline">
         <button class="bnt_tables"   name="drink_id" value=" {{ $drink->id }} ">
-            <img class="img_table" src="{{ $drink->image }}" alt="">
+            <img class="img_table"  src="{{ $drink->image }}" alt="">
             <br> <br>
             <h2 style="color:black;">{{ $drink->name }}</h2>
         </button>

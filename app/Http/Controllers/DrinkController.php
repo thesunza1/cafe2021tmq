@@ -66,7 +66,7 @@ class DrinkController extends Controller
             <br>
             <h1 id="name">'. $drink->name .'</h1>
             <br>
-            <img src="'. $drink->image .'" alt="">
+            <img style="width:200px; height:180px;" src="'. $drink->image .'" alt="">
             <br>
             <br>
             <p>price : </p>

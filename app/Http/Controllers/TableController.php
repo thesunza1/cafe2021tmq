@@ -11,6 +11,7 @@ use App\Http\Controllers\handling ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TableController extends Controller
 {
@@ -192,5 +193,52 @@ class TableController extends Controller
             $item->save();
         }
     }
+
+    //update table
+    //show update table
+    public function indexUpdateTable() {
+        $tableCDl= DB::table('tables')
+            ->where('idStatus','=','1')
+            ->join('statuses','statuses.id','=','tables.idStatus')
+            ->select('tables.id')
+            ->get();
+        $tableRestore= DB::table('tables')
+            ->where('idStatus','=','4')
+            ->join('statuses','statuses.id','=','tables.idStatus')
+            ->select('tables.id')
+            ->get();
+
+        return view('updatetable.updatetable')
+            ->with('cdl',$tableCDl)
+            ->with('restore',$tableRestore);
+        ;
+
+    }
+    public function store(Request $request) {
+        $num = $request->num;
+        for($i=1;$i<=$num;$i++) {
+            Table::insert([
+                'idStatus' => 1,
+                'addTable' => ''
+            ]);
+        }
+        return redirect('/home');
+    }
+    public function delete(Request $request) {
+        $table = $request->gettable;
+        foreach($table as $item) {
+            Table::find($item)->update(['idStatus' => 4]);
+        }
+        return redirect('/home');
+
+    }
+     public function restore(Request $request) {
+        $table = $request->gettable;
+        foreach($table as $item) {
+            Table::find($item)->update(['idStatus' => 1]);
+        }
+        return redirect('/home');
+    }   //create table
+
 }
 

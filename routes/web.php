@@ -67,3 +67,9 @@ Route::post('/home/menulist/store','DrinkController@storeMl')->name('home.menuli
 Route::get('/home/menulist/getshow/{id}','DrinkController@get_showMl')->name('home.menulist.get_show');
 Route::post('home/menulist/postupdate','DrinkController@post_update')->name('home.menulist.post_update');
 Route::post('/home/menulist/delete','DrinkController@delete')->name('home.menulist.delete');
+//update table route
+Route::get('/home/updatetable','TableController@indexUpdateTable')->name('home.updatetable');
+Route::post('/home/updatetable/delete','TableController@delete')->name('home.updatetable.delete');
+Route::post('/home/updatetable/store','TableController@store')->name('home.updatetable.store');
+Route::post('/home/updatetable/restore','TableController@restore')->name('home.updatetable.restore');
+

@@ -55,7 +55,7 @@ class WarehouseController extends Controller
     }
 
     public function delete(Request $request) {
-        dd($request->all());
-
+        Warehouse::where('id',$request->id)->delete();
+        return redirect('/home/warehouse');
     }
 }
