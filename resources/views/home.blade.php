@@ -73,7 +73,7 @@
 
 @section('content')
 <br>
-<h1 class="noti_table">being none:</h1>
+<h1 class="noti_table green1">being none:</h1>
 @foreach ($tables as $table)
     @if ($table->idStatus==1)
     <div class="tables inline">
@@ -88,7 +88,7 @@
 
 @endforeach
 <br>
-<h1 class="noti_table">being have: </h1>
+<h1 class="noti_table black1">being have: </h1>
 @foreach ($tables as $table)
     @if ($table->idStatus==2)
     <div class="tables inline">
@@ -104,7 +104,7 @@
 
 @endforeach
 <br>
-<h1 class="noti_table">being group:</h1>
+<h1 class="noti_table pink1">being group:</h1>
 @foreach ($tables as $table)
     @if ($table->idStatus==3 && $table->addTable != '')
     {{-- <script>console.log("{{$table->addTable}}");</script> --}}
@@ -129,7 +129,7 @@
 
 @endforeach
 <br>
-<h1 class="noti_table">disable table: </h1>
+<h1 class="noti_table blue1">disable table: </h1>
 @foreach ($tables as $table)
     @if ($table->idStatus==4)
     <div class="tables inline">

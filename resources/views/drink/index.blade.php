@@ -20,7 +20,7 @@
 
 @section('content')
 <br>
-<h1 class="noti_table">all menu:</h1>
+<h1 class="noti_table blue1">all menu:</h1>
 @foreach ($drinks as $drink)
     <div class="tables inline">
         <button class="bnt_tables"   name="drink_id" value=" {{ $drink->id }} ">

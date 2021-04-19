@@ -3,11 +3,21 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/updatetable/updatetable.css') }}">
+    <style>
+    .st-hl1 h1 {
+        text-align: center;
+        width: 80%;
+        margin-left: 10%;
+        color: white;background-color: #2195f3;
+    }
+    </style>
 @endsection
 
 
 @section('content')
-
+    <div class="st-hl1">
+        <h1>update table</h1>
+    </div>
     <div class="contain">
         <div class="item">
             <button class="create green" onclick="md_cr()" id="create">create table</button>
@@ -71,7 +81,7 @@
                     <br> <br>
                             <h1>non have restore table </h1>
                     @else
-                            <button type="submit" class="button blue">delete table</button>
+                            <button type="submit" class="button blue">restore table</button>
                     @endif
                     <br>
                     </form>
