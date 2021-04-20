@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StatusesTableSeeder extends Seeder
 {
@@ -14,12 +15,12 @@ class StatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('statuses')->delete();
-        
-        \DB::table('statuses')->insert(array (
-            0 => 
+
+        //DB::table('statuses')->delete();
+
+        DB::table('statuses')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'image' => 'img/status/none.png',
@@ -27,7 +28,7 @@ class StatusesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'image' => 'img/status/have.png',
@@ -35,7 +36,7 @@ class StatusesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'image' => 'img/status/group.png',
@@ -43,8 +44,16 @@ class StatusesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            3 =>
+            array (
+                'id' => 4,
+                'image' => 'img/status/disable.png',
+                'status' => 'ko dung',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
-        
-        
+
+
     }
 }

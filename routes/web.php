@@ -28,8 +28,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //vi du
-Route::get('/test01', 'test01Controller@index')->name('/test01') ;
-Route::get('/status','test01Controller@status');
+
+
 
 //them drink
 Route::get('/menu/index','DrinkController@index')->name('menu.index');
@@ -54,22 +54,32 @@ Route::post('/home/changetable', 'OrderController@changeTable')->name('home.chan
 //add to group
 Route::post('/home/addgroup','TableController@addgroup')->name('home.addgroup');
 //warehoure
-Route::get('/home/warehouse','WarehouseController@index')->name('home.warehouse');
-Route::post('/home/warehouse/store','WarehouseController@store')->name('home.warehouse.store');
-Route::get('/home/warehouse/getshow/{id}','WarehouseController@get_show')->name('home.warehouse.get_show');
-Route::post('home/warehouse/postupdate','WarehouseController@post_update')->name('home.warehouse.post_update');
-Route::post('/home/warehouse/delete','WarehouseController@delete')->name('home.warehouse.delete');
-//chart google
-Route::match(['get','post'],'/home/statistical','statistical@day')->name('home.statistical');
-//drinks
-Route::get('/home/menulist','DrinkController@indexMl')->name('home.menulist');
-Route::post('/home/menulist/store','DrinkController@storeMl')->name('home.menulist.store');
-Route::get('/home/menulist/getshow/{id}','DrinkController@get_showMl')->name('home.menulist.get_show');
-Route::post('home/menulist/postupdate','DrinkController@post_update')->name('home.menulist.post_update');
-Route::post('/home/menulist/delete','DrinkController@delete')->name('home.menulist.delete');
-//update table route
-Route::get('/home/updatetable','TableController@indexUpdateTable')->name('home.updatetable');
-Route::post('/home/updatetable/delete','TableController@delete')->name('home.updatetable.delete');
-Route::post('/home/updatetable/store','TableController@store')->name('home.updatetable.store');
-Route::post('/home/updatetable/restore','TableController@restore')->name('home.updatetable.restore');
+Route::middleware(['checkAdmin'])->group(
+    function () {
+        Route::get('/home/warehouse','WarehouseController@index')->name('home.warehouse');
+        Route::post('/home/warehouse/store','WarehouseController@store')->name('home.warehouse.store');
+        Route::get('/home/warehouse/getshow/{id}','WarehouseController@get_show')->name('home.warehouse.get_show');
+        Route::post('home/warehouse/postupdate','WarehouseController@post_update')->name('home.warehouse.post_update');
+        Route::post('/home/warehouse/delete','WarehouseController@delete')->name('home.warehouse.delete');
+        //chart google
+        Route::match(['get','post'],'/home/statistical','statistical@day')->name('home.statistical');
+        //drinks
+        Route::get('/home/menulist','DrinkController@indexMl')->name('home.menulist');
+        Route::post('/home/menulist/store','DrinkController@storeMl')->name('home.menulist.store');
+        Route::get('/home/menulist/getshow/{id}','DrinkController@get_showMl')->name('home.menulist.get_show');
+        Route::post('home/menulist/postupdate','DrinkController@post_update')->name('home.menulist.post_update');
+        Route::post('/home/menulist/delete','DrinkController@delete')->name('home.menulist.delete');
+        //update table route
+        Route::get('/home/updatetable','TableController@indexUpdateTable')->name('home.updatetable');
+        Route::post('/home/updatetable/delete','TableController@delete')->name('home.updatetable.delete');
+        Route::post('/home/updatetable/store','TableController@store')->name('home.updatetable.store');
+        Route::post('/home/updatetable/restore','TableController@restore')->name('home.updatetable.restore');
+        //user table route e
+        Route::get('/home/updateuser','Controller@index')->name('home.updateuser');
+        Route::post('/home/updateuser/store','Controller@store')->name('home.updateuser.store');
+        Route::get('/home/updateuser/getshow/{id}','Controller@show')->name('home.updateuser.show');
+        Route::post('home/updateuser/postupdate','Controller@update')->name('home.updateuser.update');
+        Route::post('/home/updateuser/delete','Controller@delete')->name('home.updateuser.delete');
+    }
+);
 

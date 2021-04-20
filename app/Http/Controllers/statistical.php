@@ -11,6 +11,10 @@ use PHPUnit\Util\Json;
 
 class statistical extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function day(Request $request) {
         if(isset($request->formday) && isset($request->today)){

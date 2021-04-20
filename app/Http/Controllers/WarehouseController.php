@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Redis;
 class WarehouseController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $warehouses = Warehouse::all()->reverse()->values() ;
         return view('warehouse.index')->with('warehouses', $warehouses);

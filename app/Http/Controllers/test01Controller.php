@@ -12,20 +12,9 @@ class test01Controller extends Controller
     public function index() {
         return view('test01') ;
     }
-    public function status() {
+    public function status(Request $request) {
 
-        //$Statuses = Status::all() ;
-        //print_r($Statuses[1]->image);
-        $Statuses = Table::find(1)->status->toArray();
-
-        dd($Statuses);
-
-
-
-
-
-
-
+        dd($request->user()->role_id);
 
         //return view('test01',compact('Statuses'));
 

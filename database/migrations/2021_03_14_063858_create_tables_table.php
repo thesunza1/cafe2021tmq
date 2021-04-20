@@ -14,12 +14,13 @@ class CreateTablesTable extends Migration
     public function up()
     {
         Schema::create('tables', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('idStatus',false,true);
-            $table->string('addTable');
-            $table->timestamps();
-            //tao khoa ngoai .
-            //$table->foreign('idStatus')->references('id')->on('status');
+        $table->increments('id')->unsigned();
+		$table->integer('idStatus',10)->unsigned();
+		$table->string('addTable');
+		$table->timestamp('created_at')->nullable()->default('NULL');
+		$table->timestamp('updated_at')->nullable()->default('NULL');
+		$table->primary('id');
+		$table->foreign('idStatus')->references('id')->on('statuses');
 
         });
         //them khoa ngoai

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DrinksTableSeeder extends Seeder
 {
@@ -14,12 +15,12 @@ class DrinksTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('drinks')->delete();
-        
-        \DB::table('drinks')->insert(array (
-            0 => 
+
+        //DB::table('drinks')->delete();
+
+        DB::table('drinks')->insert(array (
+            0 =>
             array (
                 'id' => 11,
                 'name' => 'cafe đen nóng',
@@ -29,7 +30,7 @@ class DrinksTableSeeder extends Seeder
                 'created_at' => '2021-04-13 08:29:27',
                 'updated_at' => '2021-04-13 08:29:27',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 12,
                 'name' => 'cafe đen đá',
@@ -39,7 +40,7 @@ class DrinksTableSeeder extends Seeder
                 'created_at' => '2021-04-13 08:30:45',
                 'updated_at' => '2021-04-13 08:30:45',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 13,
                 'name' => 'cafe sửa đá',
@@ -49,7 +50,7 @@ class DrinksTableSeeder extends Seeder
                 'created_at' => '2021-04-13 08:31:39',
                 'updated_at' => '2021-04-13 08:31:39',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 14,
                 'name' => 'cafe đá xoay chocolate',
@@ -59,7 +60,7 @@ class DrinksTableSeeder extends Seeder
                 'created_at' => '2021-04-13 08:32:39',
                 'updated_at' => '2021-04-13 08:32:39',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 16,
                 'name' => 'capuchino',
@@ -69,8 +70,48 @@ class DrinksTableSeeder extends Seeder
                 'created_at' => '2021-04-13 08:37:53',
                 'updated_at' => '2021-04-13 08:37:53',
             ),
+            5 =>
+            array (
+                'id' => 17,
+                'name' => 'Mojito truyền thống',
+                'price' => 23000,
+                'status' => '<p><span style="color: #545454; font-family: Roboto, sans-serif; font-size: 16px; background-color: #ffffff;">Mojito c&oacute; xuất xứ từ Cuba bao gồm rượu Rum trắng, đường m&iacute;a, chanh v&agrave; bạc h&agrave;. Ngo&agrave;i c&aacute;c th&agrave;nh phần cơ bản như tr&ecirc;n, Mojito c&ograve;n c&oacute; nhiều c&aacute;ch pha chế kh&aacute;c nhau như hoa quả tươi, sữa hoặc c&aacute;c m&ugrave;i vị kh&aacute;c nhau t&ugrave;y theo &yacute; th&iacute;ch của người d&ugrave;ng.</span></p>',
+                'image' => 'img/drinks/1618402370.jpg',
+                'created_at' => '2021-04-14 12:12:50',
+                'updated_at' => '2021-04-14 12:12:50',
+            ),
+            6 =>
+            array (
+                'id' => 18,
+                'name' => 'soda dâu Soda dâu',
+                'price' => 27000,
+                'status' => '<p><span style="color: #545454; font-family: Roboto, sans-serif; font-size: 16px; background-color: #ffffff;">Soda l&agrave; một trong những loại thức uống tươi m&aacute;t, d&ugrave;ng để giải nhiệt m&ugrave;a h&egrave;. Soda c&oacute; thể pha chế bằng việc th&ecirc;m v&agrave;o c&aacute;c loại tr&aacute;i c&acirc;y kh&aacute;c nhau v&agrave; c&aacute;c loại Siro.</span></p>',
+                'image' => 'img/drinks/1618402403.jpg',
+                'created_at' => '2021-04-14 12:13:23',
+                'updated_at' => '2021-04-14 12:13:23',
+            ),
+            7 =>
+            array (
+                'id' => 19,
+                'name' => 'Trà chanh',
+                'price' => 14000,
+                'status' => '<p><span style="color: #545454; font-family: Roboto, sans-serif; font-size: 16px; background-color: #ffffff;">&agrave; c&oacute; lẽ kh&ocirc;ng c&ograve;n xa lạ g&igrave; với mỗi người Việt của ch&uacute;ng ta. Tr&agrave; hiện nay được pha chế theo nhiều c&aacute;ch kh&aacute;c nhau từ n&oacute;ng, lạnh cho đến tr&agrave; sữa&hellip;C&aacute;c loại tr&agrave; thường thấy phổ biến hiện nay l&agrave; tr&agrave; c&uacute;c, tr&agrave; đ&agrave;o, tr&agrave; hoa hồng, tr&agrave; chanh...</span></p>',
+                'image' => 'img/drinks/1618402455.jpg',
+                'created_at' => '2021-04-14 12:14:15',
+                'updated_at' => '2021-04-14 12:14:15',
+            ),
+            8 =>
+            array (
+                'id' => 20,
+                'name' => 'Chocolate nóng',
+                'price' => 30000,
+                'status' => '<p><span style="color: #545454; font-family: Roboto, sans-serif; font-size: 16px; background-color: #ffffff;">C&aacute;c loại đồ uống n&oacute;ng như chocolate n&oacute;ng, ca cao n&oacute;ng hiện nay cũng được rất nhiều người ưa chuộng. Đồ uống n&oacute;ng thường được sử dụng v&agrave;o m&ugrave;a đ&ocirc;ng để giữ ấm cơ thể. Hoặc c&oacute; nhiều kh&aacute;ch h&agrave;ng chỉ th&iacute;ch c&aacute;c thức uống n&oacute;ng. Vậy n&ecirc;n đ&acirc;y l&agrave; loại đồ uống thường xuất hiện trong menu c&aacute;c qu&aacute;n cafe ở Việt Nam.</span></p>',
+                'image' => 'img/drinks/1618402488.jpg',
+                'created_at' => '2021-04-14 12:14:48',
+                'updated_at' => '2021-04-14 12:14:48',
+            ),
         ));
-        
-        
+
+
     }
 }

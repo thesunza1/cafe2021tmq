@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\DB;
 class TableController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function addgroup(Request $request) {
         $Ntable = $request->Ntable;

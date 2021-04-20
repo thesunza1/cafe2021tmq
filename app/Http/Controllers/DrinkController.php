@@ -14,6 +14,10 @@ use function Psy\debug;
 
 class DrinkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //show menu
     public function index() {
         $drinks = Drink::get();

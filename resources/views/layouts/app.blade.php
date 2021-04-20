@@ -84,9 +84,8 @@
                     <a href="{{ route('home.warehouse') }}">warehouse</a>
                     <a href="{{ route('home.menulist') }}">menu list </a>
                     <a href="{{ route('home.statistical') }}">statistical</a>
+                    <a href="{{ route('home.updateuser') }}">update user</a>
                     <a href="{{ route('home.updatetable') }}">update table</a>
-
-
                 @endif
             </div>
            @endguest

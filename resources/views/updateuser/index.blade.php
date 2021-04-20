@@ -1,21 +1,25 @@
 @extends('layouts.app')
 @section('styles')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/warehouse/warehouse.css') }} ">
+    <link rel="stylesheet" href="{{ asset('css/updateuser/updateuser.css') }} ">
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/warehouse/warehouse.js') }}"></script>
-
-
-
+    <script src="{{ asset('js/updateuser/updateuser.js') }}"></script>
 @endsection
 @section('content')
 <div class="wh-cten">
     <div class="wh-hl1">
-        <h1>warehouse</h1>
+        <h1>updateuser</h1>
         <br>
     </div>
+       @isset($success)
+           <div class="alert alert-success alert-block">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $success }}</strong>
+    </div>
+       @endisset
+
 
  <table class="table" id="addDrinks">
 
@@ -25,19 +29,19 @@
         </td>
 
         <td class="cell">
-            name
+           username
         </td>
         <td class="cell">
-           price
+          name
         </td>
         <td class="cell">
-            Quantity
+           phone
         </td>
         <td class="cell">
-            Date Sold
+            role
         </td>
         <td class="cell">
-            total price
+           create at
         </td>
         <td class="cell">
             delete
@@ -73,22 +77,27 @@
             <button  class="button wh-bt-cr" onclick="md_cr()">create</button>
         </td>
     </tr>
-    @foreach ($warehouses as $item)
+    @foreach ($users as $item)
     <tr class="row ">
         <td class="cell">
             {{ $item->id }}
         </td>
         <td class="cell">
-           {{ $item->toName }}
+           {{ $item->username }}
         </td>
         <td class="cell">
-           {{ $item->inquantity}}
+           {{ $item->name}}
         </td>
         <td class="cell">
-           {{ $item->price }}
+           {{ $item->phone }}
         </td>
         <td class="cell">
-           {{ $item->totalIn }}
+            @if ($item->role_id==1)
+               staff
+            @else
+               admin
+            @endif
+
         </td>
         <td class="cell">
             {{ $item->created_at }}
@@ -112,30 +121,34 @@
     <div class="modal" id="md-update">
         <div class="modal-content">
             <div class="modal-header blue">
-                <h2 class="stt">update warehouse </h2>
+                <h2 class="stt">update updateuser </h2>
             </div>
             <div class="modal-body">
                 <div class="panel">
                     <br>
-                    <form action="{{ route('home.warehouse.post_update') }}" method="post">
+                    <form action="{{ route('home.updateuser.update') }}" method="post">
                         @csrf
                         <input type="hidden" id="wh_id" name="id" value="1">
                         <div class="wh-fm-ud">
                             <div class="nit">
-                                <h2>name goods :</h2>
-                                <input type="text" id="ud_name"  name="name" >
+                                <h2>username:</h2>
+                                <input type="text" id="up_username"  name="username" >
                             </div>
                             <div class="nit">
-                                <h2>price :</h2>
-                                <input type="number" id="up_price" name="price" >
+                                <h2>password:</h2>
+                                <input type="text" id="up_pass" name="pass" >
                             </div>
                             <div class="nit">
-                                <h2>inquantity :</h2>
-                                <input type="number" id="up_inquanti" name="inquantity" >
+                                <h2>name:</h2>
+                                <input type="text" id="up_name" name="name" >
                             </div>
                             <div class="nit">
-                                <h2>total price :</h2>
-                                <input type="number" id="up_tt" name="ttprice" disabled >
+                                <h2>phone:</h2>
+                                <input type="text" id="up_phone"  name="phone" >
+                            </div>
+                            <div class="nit">
+                                <h2>role:</h2>
+                                <input type="text" id="up_role" name="role" disabled>
                             </div>
                             <div class="nit">
                                 <h2>created at :</h2>
@@ -159,30 +172,35 @@
     <div class="modal" id="md-create">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="stt">create warehouse </h2>
+                <h2 class="stt">create updateuser </h2>
             </div>
             <div class="modal-body">
                 <div class="panel">
                     <br>
-                    <form action="{{ route('home.warehouse.store') }}" method="post">
+                    <form action="{{ route('home.updateuser.store') }}" method="post">
                         @csrf
                         <input type="hidden" id="wh_cr_id" name="id" value="1">
                         <div class="wh-fm-ud">
                             <div class="nit">
-                                <h2>name goods :</h2>
-                                <input type="text" id="cr_name"  name="name" required>
+                                <h2>username:</h2>
+                                <input type="text" id="cr-username"  name="username" required>
                             </div>
                             <div class="nit">
-                                <h2>price :</h2>
-                                <input type="number" id="cr_price" name="price" min="1" value="1000" >
+                                <h2>password:</h2>
+                                <input type="text" id="cr_pass" name="pass"  >
                             </div>
                             <div class="nit">
-                                <h2>inquantity :</h2>
-                                <input type="number" id="cr_inquanti" min="1" value="1" name="inquantity" >
+                                <h2>name :</h2>
+                                <input type="text" id="cr_name"  name="name" >
                             </div>
                             <div class="nit">
-                                <h2>total price :</h2>
-                                <input type="number" id="cr_tt" name="ttprice" value="1000" disabled >
+                                <h2>phone:</h2>
+                                <input type="text" id="cr_phone"  name="phone" >
+                            </div>
+                            <div class="nit">
+                                <h2>role:</h2>
+
+                                <input type="text" id="cr_role" name="role" disabled value="staff">
                             </div>
                             <div class="nit">
                                 <h2>created at :</h2>
@@ -206,12 +224,12 @@
     <div class="modal" id="md-delete">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="stt">create warehouse </h2>
+                <h2 class="stt">create updateuser </h2>
             </div>
             <div class="modal-body">
                 <div class="panel">
                     <br>
-                    <form action="{{ route('home.warehouse.delete') }}" method="post">
+                    <form action="{{ route('home.updateuser.delete') }}" method="post">
                         @csrf
                         <input type="hidden" id="wh_dl_id" name="id" value="1">
                         <h1><center>do you want delete it?</center></h1>
@@ -222,9 +240,7 @@
                                     <div></div>
                                 </td>
                                 <td class="">
-
                                     <button type="submit" class="button red">delete</button>
-
                                 </td>
                             </tr>
                         </table><br>
